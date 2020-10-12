@@ -1,4 +1,4 @@
-package com.binay.userdetails.configuration;
+package com.binay.userdetails.rest.security.jwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

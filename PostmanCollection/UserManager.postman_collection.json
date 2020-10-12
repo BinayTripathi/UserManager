@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "a6a9af9d-0318-4793-a69a-bcabb638c2b0",
+		"name": "UserManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get JWT Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\" : \"un1\",\n\t\"password\" : \"pass1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1bjUiLCJyb2xlcyI6WyJST0xFX05PTi1BRE1JTiJdLCJpYXQiOjE2MDI0OTk3NTIsImV4cCI6MTYwMjUwMzM1Mn0.Bvaq9aTt0byHKn1jtoo9e01Qg_6rc2SYhxBrxECx70o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\" : \"Binay\",\n\t\"password\" : \"binay\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/10001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1bjEiLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYwMjUwMTQ2NCwiZXhwIjoxNjAyNTA1MDY0fQ.0UQcF2sYMx8kM_yIb8oXCEcPPlO6vIMr2uUc62vH088",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"mr\",\n    \"firstn\": \"Binay\",\n    \"lastname\": \"Tripathi1\",\n    \"gender\": \"male\",\n    \"address\": {\n        \"address_id\": 1002,\n        \"state\": \"Vic\",\n        \"city\": \"Melbourne\",\n        \"postCode\": 3131\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/10001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

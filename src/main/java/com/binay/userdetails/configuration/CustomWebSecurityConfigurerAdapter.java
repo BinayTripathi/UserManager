@@ -1,4 +1,4 @@
-package com.binay.userdetails.rest.security.jwt;
+package com.binay.userdetails.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +13,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.binay.userdetails.rest.security.jwt.JwtConfigurer;
+import com.binay.userdetails.rest.security.jwt.JwtTokenManager;
 
 @Configuration
 public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
@@ -43,14 +46,20 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
+		final String[] AUTH_WHITELIST = {
+	            "/swagger-resources",
+	            "/swagger-resources/**",
+	            "/swagger-ui.html"
+	    };
+		
         http
             .httpBasic().disable()
             .csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
                 .authorizeRequests()
-                .antMatchers("/userdetails").permitAll()
                 .antMatchers("/authenticate").permitAll()
+                .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/userdetails/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/userdetails/**").hasAnyRole("NON-ADMIN", "ADMIN")
