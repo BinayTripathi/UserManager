@@ -25,6 +25,7 @@ import com.binay.userdetails.persistence.entity.Gender;
 import com.binay.userdetails.persistence.entity.User;
 import com.binay.userdetails.persistence.repository.AddressRepository;
 import com.binay.userdetails.persistence.repository.UserRepository;
+import com.binay.userdetails.rest.dto.UserDto;
 import com.binay.userdetails.service.UserService;
 
 @RestController
@@ -47,10 +48,10 @@ public class UserRestController {
 	PasswordEncoder passwordEncoder; 
 	
 	@GetMapping("userdetails/{userId}")
-	public ResponseEntity<User> userdetails(@PathVariable @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message="Only numbers allowed") String userId) {
+	public ResponseEntity<UserDto> userdetails(@PathVariable @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message="Only numbers allowed") String userId) {
 		
-		User user = userService.getUser(Integer.parseInt(userId));		
-		return ResponseEntity.ok(user);
+		UserDto userDto = userService.getUser(Integer.parseInt(userId));		
+		return ResponseEntity.ok(userDto);
 	}
 	
 	
@@ -59,10 +60,10 @@ public class UserRestController {
 	@SuppressWarnings("rawtypes")
 	@PutMapping("userdetails/{userId}")
 	public ResponseEntity updateUser(@PathVariable @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message="Only numbers allowed") String userId,
-			@RequestBody User user) {
+			@RequestBody UserDto user) {
 		
 		userService.updateUser(Integer.parseInt(userId), user);
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.noContent().build();
 		
 	}
 	

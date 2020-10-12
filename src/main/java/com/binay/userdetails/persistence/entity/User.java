@@ -54,7 +54,7 @@ public class User implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	Gender gender;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	Address address;
 	
 	
