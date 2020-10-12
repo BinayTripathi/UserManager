@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Get JWT Token",
+			"name": "Get JWT Token - Admin",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -118,6 +118,37 @@
 						"api",
 						"userdetails",
 						"10001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JWT Token - Non-Admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\" : \"un5\",\n\t\"password\" : \"pass5\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"authenticate"
 					]
 				}
 			},
