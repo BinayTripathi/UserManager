@@ -138,7 +138,7 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
 			<scope>test</scope>
@@ -149,7 +149,7 @@
 			<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
 			<version>2.0.1.RELEASE</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<dependencyManagement>
@@ -166,7 +166,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
 				<version>2.2.4.RELEASE</version>
@@ -174,7 +174,7 @@
 				<configuration>
 					<testFramework>JUNIT5</testFramework>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
